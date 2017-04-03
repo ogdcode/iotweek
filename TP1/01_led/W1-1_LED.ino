@@ -22,6 +22,7 @@ void loop() {
     doStuff();
 }
 
+// Test LED state
 void test() {
   digitalWrite(LEDS[1], HIGH);
   delay(1000);
@@ -29,6 +30,8 @@ void test() {
   delay(1000);
 }
 
+// Control LEDs
+// HIGH = OFF, LOW = ON
 void doStuff() {
     digitalWrite(LEDS[1], HIGH);
     digitalWrite(LEDS[4], HIGH);

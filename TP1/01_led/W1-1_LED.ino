@@ -8,17 +8,20 @@ void setup() {
 }
 
 void loop() {
+  //test();
+  
   // the 6 LEDs work by 2 groups of 3
   // they simulate two semaphors
   // they function as follows:
   // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
   //  ON  -- OFF  --  ON  -- OFF  -- OFF  -- OFF
-  // (3 seconds)
-  // OFF  --  ON  -- OFF  -- OFF  --  ON  -- OFF
-  // (1 second)
+  // (4 seconds)
   // OFF  -- OFF  --  ON  --  ON  -- OFF  -- OFF
-  // (3 seconds)
-    //test();
+  // (4 seconds)
+  // OFF  --  ON  -- OFF  -- OFF  --  ON  -- OFF
+  // (2 seconds)
+  // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
+  // and so on...
     doStuff();
 }
 

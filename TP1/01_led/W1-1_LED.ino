@@ -12,7 +12,7 @@ void loop() {
   // they simulate two semaphors
   // they function as follows:
   // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
-  //  ON  -- OFF  --  ON  -- OFF  -- OFF  --  ON
+  //  ON  -- OFF  --  ON  -- OFF  -- OFF  -- OFF
   // (3 seconds)
   // OFF  --  ON  -- OFF  -- OFF  --  ON  -- OFF
   // (1 second)

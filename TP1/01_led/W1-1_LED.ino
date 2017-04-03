@@ -16,11 +16,14 @@ void loop() {
   // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
   //  ON  -- OFF  --  ON  -- OFF  -- OFF  -- OFF
   // (4 seconds)
+  // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
   // OFF  -- OFF  --  ON  --  ON  -- OFF  -- OFF
   // (4 seconds)
+  // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
   // OFF  --  ON  -- OFF  -- OFF  --  ON  -- OFF
   // (2 seconds)
   // RED1 -- ORG1 -- GRN1 -- RED2 -- ORG2 -- GRN2
+  //  ON  -- OFF  --  ON  -- OFF  -- OFF  -- OFF
   // and so on...
     doStuff();
 }

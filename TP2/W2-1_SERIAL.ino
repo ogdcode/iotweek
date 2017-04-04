@@ -16,6 +16,8 @@ void loop() {
 
 // Test serial communication
 void simpleReadSerial() {
+  // Check if something can be read
+  // If not, print "Nothing..."
   if (Serial.available()) {
     int lu = Serial.read();
     Serial.println(lu);
@@ -26,10 +28,16 @@ void simpleReadSerial() {
 }
 
 void timeMillis() {
-  t = millis();
-  // Prints time since program started
-  Serial.print("$$> ");
-  Serial.println(t);
-  delay(500);  
+  // If serial connection can ba made, then print time since program started
+  // Otherwise, print "Nothing..."
+  if (Serial.available()) {
+    t = millis();
+    // Prints time since program started
+    Serial.print("$$> ");
+    Serial.println(t);
+    delay(500);  
+  } else {
+    Serial.println("Nothing...");
+  }
 }
 

@@ -1,8 +1,7 @@
-//#define digitalPinToInterrupt(p)  ( (p) >= 2 && (p) <= 5 ? 0 : -1 ) 
 #define INTER 2
-#define PIN_1 3
-#define PIN_2 18
-#define PIN_3 19
+#define PIN_1 18
+#define PIN_2 19
+#define PIN_3 20
 
 volatile unsigned long buttonTime = 0;
 volatile int trigger = 0;
@@ -12,6 +11,8 @@ int inta = 0, intb = 0, intc = 0;
 
 // Initializaton function.
 void setup() {
+  Serial.begin(9600);
+  while (!Serial) {}
   initPins();
   attachInterrupts();
 }
@@ -37,13 +38,9 @@ void initPins() {
 }
 
 // Setup interrupts with actions for some (or all) pins.
+// digitalPinToInterrupt translates pin numbers into interrupt numbers
 void attachInterrupts() {
-//  attachInterrupt(INTER, detect, FALLING);
-  attachInterrupt(PIN_1, detect, FALLING);
-//  attachInterrupt(PIN_2, detect, FALLING);
-//  attachInterrupt(PIN_3, detect, FALLING);
-  attachInterrupt(digitalPinToInterrupt(INTER), detect, FALLING);
-  //attachInterrupt(digitalPinToInterrupt(PIN_1), detect, FALLING);
+  attachInterrupt(digitalPinToInterrupt(PIN_1), detect, FALLING);
   attachInterrupt(digitalPinToInterrupt(PIN_2), detect, FALLING);
   attachInterrupt(digitalPinToInterrupt(PIN_3), detect, FALLING);
 }
@@ -57,8 +54,10 @@ void updateTrigger() {
     else if (trigger == 2) intb++;
     else if (trigger == 3) intc++;
 
-    displaySerial("trigger = ", trigger);
     displaySerial("total = ", total);
+    displaySerial("inta = ", inta);
+    displaySerial("intb = ", intb);
+    displaySerial("intc = ", intc);
     trigger = 0;
   }
 }

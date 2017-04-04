@@ -12,6 +12,7 @@ void setup() {
 void loop() {
   //simpleReadSerial();
   timeMillis();
+  delay(2000);
 }
 
 // Test serial communication
@@ -24,7 +25,6 @@ void simpleReadSerial() {
   } else {
     Serial.println("Nothing...");
   }
-  delay(2000);
 }
 
 void timeMillis() {

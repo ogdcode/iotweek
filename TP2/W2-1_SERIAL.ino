@@ -28,7 +28,7 @@ void simpleReadSerial() {
 }
 
 void timeMillis() {
-  // If serial connection can ba made, then print time since program started
+  // If serial connection can be made, then print time since program started
   // Otherwise, print "Nothing..."
   if (Serial.available()) {
     t = millis();

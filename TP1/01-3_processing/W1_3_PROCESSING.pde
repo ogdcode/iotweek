@@ -8,11 +8,11 @@ int ledPin = 13;
 
 void setup() 
 {
+  // Display the list of opened ports to find the one where the card is.
+  println((Object[]) Arduino.list());
+  
   arduino = new Arduino(this, Arduino.list()[1], 57600);
   arduino.pinMode(13, Arduino.OUTPUT);
-  
-  // Display the list of Arduino cards to find the good one.
-  println(Arduino.list());
 }
 
 

@@ -6,9 +6,8 @@ require 'json'
 BASE_URL = "https://api.mlab.com:443/api/1/databases/iotweek-db/collections"
 API_KEY = "gUBeJJih5LDEcH9jLV3duXYRmx-Rw7dJ"
 
-def does_id_exist(id)
-	id = JSON.parse(id)['card_id']
-	id = URI.escape("{\"card_id\": \"#{id}\"}")
+def does_id_exist(cardId)
+	id = URI.escape("{\"card_id\": \"#{cardId}\"}")
 	uri = URI.parse("#{BASE_URL}/cards?fo=true&q=#{id}&apiKey=#{API_KEY}")
 
 	# Create the HTTPS object
@@ -19,6 +18,9 @@ def does_id_exist(id)
 	req = Net::HTTP::Get.new(uri.request_uri)
 
 	res = https.request(req)
+	if res.body.strip == "null" # mongolab is weird
+		return nil
+	end
 	body = JSON.parse(res.body)
 
 	if body.nil?
@@ -28,16 +30,17 @@ def does_id_exist(id)
 	end
 end
 
-def authorize(id)
-	attempt = {'card_id' => id, 'timestamp' => Time.now.to_i, 'authorized' => 'false'}
-	exists = does_id_exist(attempt.to_json)
+def authorize(cardId)
+	attempt = {'card_id' => cardId, 'timestamp' => Time.now.to_i, 'authorized' => 'false'}
+	exists = does_id_exist(cardId)
 	if !exists.nil?
 		attempt['authorized'] = 'true'
 	end
 
 	send_api(attempt, "attempts")
-
-	return attempt['authorized'].eql? 'true'
+	authorized = attempt['authorized'].eql? 'true'
+	puts "Card with id #{cardId} is : #{authorized ? "AUTHORIZED" : "UNAUTHORIZED"}"
+	return authorized
 end
 
 def send_api(data, collection)

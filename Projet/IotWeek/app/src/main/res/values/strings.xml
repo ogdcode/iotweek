@@ -1,3 +1,18 @@
 <resources>
-    <string name="app_name">IotWeek</string>
+    <string name="app_name">Access Control Manager</string>
+    <string name="warning_no_results">Aucun résultat n\'a été trouvé</string>
+    <string name="error_fetching_cards">Une erreur est survenue durant le chargement des cartes</string>
+    <string name="error_fetching_attempts">Une erreur est survenue durant le chargement de l\'historique des accès</string>
+    <string name="error_generic">Une erreur est survenue</string>
+    <string name="error_network">Une erreur réseau est survenue. Vérifiez votre connexion et réessayez.</string>
+    <string name="error_checking_card">Une erreur est survenue durant la vérification de la carte</string>
+    <string name="message_checking_card">Vérification de la carte...</string>
+    <string name="tab0_name">Historique d\'accès</string>
+    <string name="tab1_name">Cartes</string>
+    <string name="nfc_activity_title">Vérifier une carte</string>
+    <string name="action_scan_card">Scannez une carte</string>
+    <string name="nfc_dialog_title_found">Carte trouvée</string>
+    <string name="nfc_dialog_title_missing">Carte introuvable !</string>
+    <string name="nfc_dialog_message_found">ID Carte : %1$s,\nNom Carte : %2$s</string>
+    <string name="nfc_dialog_message_missing">ID Carte : %s</string>
 </resources>

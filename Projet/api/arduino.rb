@@ -1,8 +1,8 @@
 # Simple Ruby program to read from Arduino serial.
 # Uses the SerialPort gem (http://rubygems.org/gems/serialport)
 
-require "serialport"
-require_relative "server.rb"
+require 'serialport'
+require_relative 'server.rb'
 
 # Parameters for serial port connection
 port_str = "#{ARGV[0]}"

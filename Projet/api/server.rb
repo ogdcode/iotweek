@@ -3,8 +3,8 @@ require 'net/https'
 require 'uri'
 require 'json'
 
-BASE_URL = "https://api.mlab.com:443/api/1/databases/iotweek-db/collections"
-API_KEY = "gUBeJJih5LDEcH9jLV3duXYRmx-Rw7dJ"
+BASE_URL = 'https://api.mlab.com:443/api/1/databases/iotweek-db/collections'
+API_KEY = 'gUBeJJih5LDEcH9jLV3duXYRmx-Rw7dJ'
 
 def does_id_exist(cardId)
 	id = URI.escape("{\"card_id\": \"#{cardId}\"}")
@@ -18,7 +18,7 @@ def does_id_exist(cardId)
 	req = Net::HTTP::Get.new(uri.request_uri)
 
 	res = https.request(req)
-	if res.body.strip == "null" # mongolab is weird
+	if res.body.strip == 'null' # mongolab is weird
 		return nil
 	end
 	body = JSON.parse(res.body)
@@ -31,13 +31,13 @@ def does_id_exist(cardId)
 end
 
 def authorize(cardId)
-	attempt = {'card_id' => cardId, 'timestamp' => Time.now.to_i, 'authorized' => 'false'}
+	attempt = {'card_id' => cardId, 'timestamp' => (Time.now.to_f * 1000).to_i, 'authorized' => 'false'}
 	exists = does_id_exist(cardId)
 	if !exists.nil?
 		attempt['authorized'] = 'true'
 	end
 
-	send_api(attempt, "attempts")
+	send_api(attempt, 'attempts')
 	authorized = attempt['authorized'].eql? 'true'
 	puts "Card with id #{cardId} is : #{authorized ? "AUTHORIZED" : "UNAUTHORIZED"}"
 	return authorized
@@ -60,7 +60,3 @@ def send_api(data, collection)
 
 	return res.code
 end
-
-#data = { 'id' => 'cafebebe', 'timestamp' => 123456789, 'authorized' => 'false' }
-
-#send_api({ 'card_id' => 'cafebebe', 'card_name' => 'Jean-Paul'}, "cards")
